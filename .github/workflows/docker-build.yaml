@@ -19,4 +19,4 @@ jobs:
       with:
         context: .
         push: true
-        tags: shiyu.jfrog.io/docker:latest
+        tags: shiyu.jfrog.io/db-health-check:latest
