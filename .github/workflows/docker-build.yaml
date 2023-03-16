@@ -1,0 +1,22 @@
+name: Docker build and push
+on:
+  push:
+    branches:
+      - main
+jobs:
+  build-and-push:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Login to JFrog
+      uses: docker/login-action@v1
+      with:
+        registry: <your-registry>.jfrog.io
+        username: ${{ secrets.JFROG_USERNAME }}
+        password: ${{ secrets.JFROG_PASSWORD }}
+    - name: Build and push Docker image
+      uses: docker/build-push-action@v2
+      with:
+        context: .
+        push: true
+        tags: shiyu.jfrog.io/docker:latest
